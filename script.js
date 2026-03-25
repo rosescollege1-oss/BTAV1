@@ -140,7 +140,7 @@ ${message}
 `;
 
       const gmailUrl =
-        `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent("rosescollege1@gmail.com")}` +
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent("booking.blacktie@gmail.com")}` +
         `&su=${encodeURIComponent(subject)}` +
         `&body=${encodeURIComponent(body)}`;
 
