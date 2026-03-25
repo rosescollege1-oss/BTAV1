@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Tie Affair | Luxury Mobile Bar Service</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#home">Home</a>
+            <a href="cocktails.html">Drink Menu</a>
+            <a href="faq.html">FAQs</a>
+            <a href="#about-us">About Us</a>
+            <a href="#vendor">Book Us as a Vendor</a>
+            <a href="#booking">Inquire</a>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="hero-bg" style="background-image: url('images/hero.jpg');"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <div class="hero-logo-wrap">
+                <img src="images/logo.png" alt="Black Tie Affair logo" class="hero-logo">
+            </div>
+
+            <h1 class="brand-title">Black Tie Affair</h1>
+            <h2 class="headline">Crafted for Celebrations, Poured with Style</h2>
+
+            <div class="hero-actions">
+                <button class="btn btn-primary" type="button" onclick="scrollToSection('packages')">
+                    Explore Packages
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="packages" id="packages">
+        <h2 class="section-title">Package Selection</h2>
+        <p class="section-desc package-intro">
+            Choose the service style that fits your celebration best, then personalize your estimate below.
+            <span>Note: Mocktails are always complimentary and can be incorporated into your menu with advance notice.</span>
+        </p>
+
+
+        <div class="package-cards">
+            <div class="card package-card">
+                <h3>Cocktail Hour</h3>
+                <p class="hours">3 Hours</p>
+                <p class="pkg-detail">
+                    Perfect for showers, cocktail hours, rehearsal dinners, and shorter celebrations with a polished, elevated feel.
+                </p>
+                <button class="btn-select" type="button" onclick="selectPackage('Cocktail Hour', 3)">
+                    Select Package
+                </button>
+            </div>
+
+            <div class="card package-card">
+                <h3>Formal Toast</h3>
+                <p class="hours">4 Hours</p>
+                <p class="pkg-detail">
+                    An elegant fit for receptions, milestone celebrations, and private events that deserve seamless bar service.
+                </p>
+                <button class="btn-select" type="button" onclick="selectPackage('Formal Toast', 4)">
+                    Select Package
+                </button>
+            </div>
+
+            <div class="card package-card featured-package">
+    <img src="images/bowtie.png" alt="Black Tie" class="bowtie-badge">
+
+    <h3>Black Tie</h3>
+    <p class="hours">5 Hours</p>
+    <p class="pkg-detail">
+        Our signature full-service package for weddings and unforgettable events that call for a longer pour.
+    </p>
+    <button class="btn-select" type="button" onclick="selectPackage('Black Tie', 5)">
+        Select Package
+    </button>
+</div>
+
+            <div class="card package-card">
+                <h3>After Hours</h3>
+                <p class="hours">6 Hours</p>
+                <p class="pkg-detail">
+                    For celebrations that linger beautifully into the night with extended service and a lasting impression.
+                </p>
+                <button class="btn-select" type="button" onclick="selectPackage('After Hours', 6)">
+                    Select Package
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="customizer" class="customizer hidden" style="background-image: url('images/calc-bg.jpg');">
+        <div class="calc-container">
+            <h3 id="selected-pkg-name">Customize Your Service</h3>
+
+            <div class="calc-grid compact-grid">
+                <div class="input-group">
+                    <label for="calc-guests">Guest Count</label>
+                    <input type="number" id="calc-guests" value="50" min="1" oninput="updateEstimate()">
+                </div>
+
+                <div class="input-group">
+                    <label for="calc-miles">Miles from Malvern</label>
+                    <input type="number" id="calc-miles" value="0" min="0" oninput="updateEstimate()">
+                </div>
+
+                <div class="input-group">
+                    <label for="calc-extra-hours">Extra Hours</label>
+                    <input type="number" id="calc-extra-hours" value="0" min="0" oninput="updateEstimate()">
+                </div>
+
+                <div class="upgrade-cards">
+                    <div class="upgrade-card">
+                        <div class="checkbox-container centered-checkbox">
+                            <input type="checkbox" id="calc-menu" onchange="updateEstimate()">
+                            <label for="calc-menu">Custom Menu + Signage</label>
+                        </div>
+                        <p class="upgrade-price">+$150</p>
+                        <p class="upgrade-desc">
+                            Printed signature drink menus and personalized bar signage for a more polished presentation.
+                        </p>
+                    </div>
+
+                    <div class="upgrade-card">
+                        <div class="checkbox-container centered-checkbox">
+                            <input type="checkbox" id="calc-photo" onchange="updateEstimate()">
+                            <label for="calc-photo">360 Photo Booth</label>
+                        </div>
+                        <p class="upgrade-price">+$100/hour</p>
+                        <p class="upgrade-desc">
+                            A high-energy add-on for guest interaction, fun video moments, and even more event buzz.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="estimate-total">$0.00</div>
+            <div id="estimate-details" class="estimate-details">Select a package to begin your estimate.</div>
+
+            <input type="hidden" id="selected-package">
+            <input type="hidden" id="selected-hours">
+            <textarea id="form-summary" class="summary-box" readonly placeholder="Your estimate summary will appear here."></textarea>
+
+            <button class="btn btn-primary" type="button" onclick="scrollToSection('booking')">
+                Request Availability
+            </button>
+        </div>
+    </section>
+
+    <section class="about-us-section" id="about-us">
+        <div class="about-us-container centered-content">
+            <div class="about-us-text">
+                <p class="mini-label">What We Do</p>
+                <h2 class="section-title">We bring the bar experience your event has been missing.</h2>
+                <p>
+                    Black Tie Affair is a luxury mobile bar service designed for weddings, private parties, corporate events, and celebrations that deserve more than the ordinary.
+                </p>
+                <p>
+                    We create a setup that feels polished, inviting, and memorable — the kind of detail guests talk about long after the event is over. From curated menus to seamless service, we help turn your bar into part of the experience, not just another vendor table in the corner.
+                </p>
+                <p>
+                    Our goal is simple: make your event feel elevated, effortless, and impossible to forget.
+                </p>
+            </div>
+
+            <div class="about-us-image">
+                <div class="about-image-frame" style="background-image: url('images/about-us.jpg');"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="lifestyle-break">
+        <div class="break-img" style="background-image: url('images/lifestyle1.jpg');">
+            <div class="break-overlay">
+                <h2>Luxury Presentation. Seamless Service.</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="logistics-section" style="background-image: url('images/logistics-bg.jpg');">
+        <div class="logistics-overlay">
+            <h2 class="section-title white">About the Experience</h2>
+            <div class="logistics-grid">
+                <div class="log-card">
+                    <h4>Thoughtful Staffing</h4>
+                    <p>We staff each event with care so service feels smooth, polished, and attentive from the first pour to the final toast.</p>
+                </div>
+
+                <div class="log-card">
+                    <h4>Refined Setup</h4>
+                    <p>From our trailer presentation to the final bar details, every element is styled to complement your event beautifully.</p>
+                </div>
+
+                <div class="log-card">
+                    <h4>What's Included</h4>
+                    <p>Mixers, garnishes, cups, napkins, bar tools, setup, and breakdown are handled for you so hosting feels effortless.</p>
+                </div>
+
+                <div class="log-card">
+                    <h4>Easy Planning</h4>
+                    <p>You provide the alcohol, and we guide you with a thoughtful shopping list so the process stays simple and stress-free.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vendor-section" id="vendor">
+        <div class="vendor-container centered-content">
+            <div class="vendor-text">
+                <p class="mini-label">For Festivals, Markets & Public Events</p>
+                <h2 class="section-title white">Book Us as a Vendor</h2>
+                <p>
+                    Hosting a market, festival, fair, school event, community celebration, or public gathering? Black Tie Affair is also available for select vendor opportunities.
+                </p>
+                <p>
+                    We offer a polished, crowd-friendly setup that adds energy, style, and an experience guests naturally gravitate toward. Whether you want cocktails, mocktails, specialty drinks, or a custom event concept, we’d love to hear what you’re planning.
+                </p>
+                <button class="btn btn-light" type="button" onclick="scrollToSection('booking')">
+                    Inquire About Vendor Booking
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2 class="section-title">The Gallery</h2>
+        <div class="gallery-grid">
+            <img src="images/gal1.jpg" class="gallery-item" alt="Bar setup">
+            <img src="images/gal2.jpg" class="gallery-item" alt="Cocktail detail">
+            <img src="images/gal3.jpg" class="gallery-item" alt="Event service">
+            <img src="images/gal4.jpg" class="gallery-item" alt="Signature drink">
+            <img src="images/gal5.jpg" class="gallery-item" alt="The trailer">
+            <img src="images/gal6.jpg" class="gallery-item" alt="Evening celebration">
+        </div>
+    </section>
+
+    <section class="booking-section" id="booking">
+        <div class="form-container">
+            <h2 class="section-title white">Send an Inquiry</h2>
+            <p class="booking-copy">
+                Tell us a little about your event and we’ll help you create a bar experience your guests won’t stop talking about.
+            </p>
+
+            <form id="inquiry-form" class="western-form">
+                <input type="text" id="inq-name" placeholder="Your Name" required>
+                <input type="email" id="inq-email" placeholder="Email Address" required>
+                <input type="tel" id="inq-phone" placeholder="Phone Number">
+                <input type="date" id="inq-date">
+                <textarea id="inq-message" placeholder="Tell us about your event — venue, style, guest count, theme, or anything you'd like us to know."></textarea>
+                <button type="submit" class="btn btn-primary full-width">Open Inquiry in Gmail</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3 class="footer-brand">Black Tie Affair</h3>
+            <p>Crafted for Celebrations, Poured with Style</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="cocktails.html">Drink Menu</a>
+                <a href="faq.html">FAQs</a>
+                <a href="#about-us">About Us</a>
+                <a href="#vendor">Vendor Booking</a>
+                <a href="#booking">Inquire</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
